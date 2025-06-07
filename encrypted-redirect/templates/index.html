@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Auto Redirect Link</title>
   <style>
     body {
@@ -45,9 +45,16 @@
 <body>
   <div class="container">
     <h2>🔗 Go to Destination</h2>
-    <button onclick="window.location.href='{{ redirect_link }}'">Go to Destination</button>
+    <p>You will be redirected shortly...</p>
+    <button onclick="window.location.href='{{ redirect_link }}'">Go Now</button>
     <p style="margin-top:2rem">Or use this link:</p>
     <code>{{ redirect_link }}</code>
   </div>
+
+  <script>
+    setTimeout(() => {
+      window.location.href = "{{ redirect_link }}";
+    }, 5000); // Auto redirect in 5 seconds
+  </script>
 </body>
 </html>

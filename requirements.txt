@@ -1,3 +1,5 @@
 Flask
 itsdangerous
 gunicorn
+
+python-dotenv

@@ -1,11 +1,18 @@
 from flask import Flask, request, redirect, render_template
 import itsdangerous
+import os
 from urllib.parse import urlparse
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
 app = Flask(__name__)
-SECRET_KEY = "Imh0dHBzOi8vdHJhdmVsYXJvdW5kcGxhY2VzLmNvbS9yZXN0YXVyYW50cy1pbi1ib2NhLXJhdG9uLWZsLyI.dFsRAGuB5HjDu4sefPxqbBCR5l8"
+SECRET_KEY = os.environ.get("SECRET_KEY", "super-secret-fallback-key")
 serializer = itsdangerous.URLSafeSerializer(SECRET_KEY)
 
+# Allow only these domains to prevent abuse
 ALLOWED_DOMAINS = ["travelaroundplaces.com"]
 
 def make_redirect_token(url):
@@ -35,7 +42,10 @@ def redirect_route():
 def index():
     url = "https://travelaroundplaces.com/restaurants-in-boca-raton-fl/"
     token = make_redirect_token(url)
-    redirect_link = f"http://127.0.0.1:5000/redirect?t={token}"
+    
+    # ⚠️ Use your actual Render domain here once deployed
+    redirect_link = f"https://redirector-site.onrender.com/redirect?t={token}"
+    
     return render_template('index.html', redirect_link=redirect_link)
 
 if __name__ == '__main__':

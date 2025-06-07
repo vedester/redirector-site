@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Auto Redirect Link</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      padding: 2rem;
+    }
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      max-width: 700px;
+      margin: auto;
+      text-align: center;
+    }
+    button {
+      margin-top: 1.5rem;
+      padding: 0.7rem 1.5rem;
+      font-size: 1.1rem;
+      background: #0070f3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #005bb5;
+    }
+    code {
+      background: #eee;
+      padding: 0.7rem;
+      display: block;
+      margin-top: 1rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🔗 Go to Destination</h2>
+    <button onclick="window.location.href='{{ redirect_link }}'">Go to Destination</button>
+    <p style="margin-top:2rem">Or use this link:</p>
+    <code>{{ redirect_link }}</code>
+  </div>
+</body>
+</html>

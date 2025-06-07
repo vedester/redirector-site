@@ -1,1 +1,1 @@
-web: gunicorn encrypted-redirect.app:app
+web: gunicorn app:app
